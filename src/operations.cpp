@@ -43,13 +43,13 @@ std::map<std::string, std::string> load_partials(const std::string dirpath,
         const std::string& postfix) {
     std::map<std::string, std::string> res;
     for (const st::TinydirFile& tf : st::list_directory(dirpath)) {
-        if (!(tf.is_regular_file() && su::ends_with(tf.get_name(), postfix))) continue;
-        std::string name = std::string(tf.get_name().data(), tf.get_name().length() - postfix.length());
-        std::string val = utils::read_file_to_string(tf.get_path());
+        if (!(tf.is_regular_file() && su::ends_with(tf.name(), postfix))) continue;
+        std::string name = std::string(tf.name().data(), tf.name().length() - postfix.length());
+        std::string val = utils::read_file_to_string(tf.path());
         auto pa = res.insert(std::make_pair(std::move(name), std::move(val)));
         if (!pa.second) throw MustacheException(TRACEMSG(
                 "Invalid duplicate partials element," +
-                " dirpath: [" + dirpath + "], path: [" + tf.get_path() + "]"));
+                " dirpath: [" + dirpath + "], path: [" + tf.path() + "]"));
     }
     return res;
 }

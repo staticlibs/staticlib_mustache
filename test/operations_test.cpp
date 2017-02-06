@@ -29,11 +29,13 @@
 #include "staticlib/config/assert.hpp"
 #include "staticlib/io.hpp"
 #include "staticlib/serialization.hpp"
+#include "staticlib/tinydir.hpp"
 #include "staticlib/utils.hpp"
 
 namespace si = staticlib::io;
 namespace sm = staticlib::mustache;
 namespace ss = staticlib::serialization;
+namespace st = staticlib::tinydir;
 namespace su = staticlib::utils;
 
 void test_render() {
@@ -47,10 +49,10 @@ void test_render() {
     ]
 })");
     {
-        auto fd = su::FileDescriptor("header.mustache", 'w');
+        auto fd = st::TinydirFileSink("header.mustache");
         auto src = si::string_source("Behold");
         std::array<char, 4096> buf;
-        si::copy_all(src, fd, buf.data(), buf.size());
+        si::copy_all(src, fd, buf);
     }
     std::map<std::string, std::string> partials = sm::load_partials(".");
     std::string res = sm::render_string(text, values, partials);

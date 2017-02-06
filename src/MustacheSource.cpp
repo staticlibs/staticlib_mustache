@@ -66,14 +66,14 @@ public:
                 " with values: [" + ss::dump_json_to_string(json) + "]"));
     }
 
-    std::streamsize read(MustacheSource&, char* buffer, std::streamsize length) {
-        return renderer.read(buffer, length);
+    std::streamsize read(MustacheSource&, sc::span<char> span) {
+        return renderer.read(span.data(), span.size_signed());
     }   
 
 };
 PIMPL_FORWARD_CONSTRUCTOR(MustacheSource, (const std::string&)
         (const staticlib::serialization::JsonValue&)(partmap_type), (), MustacheException)
-PIMPL_FORWARD_METHOD(MustacheSource, std::streamsize, read, (char*) (std::streamsize), (), MustacheException)
+PIMPL_FORWARD_METHOD(MustacheSource, std::streamsize, read, (sc::span<char>), (), MustacheException)
     
 } // namespace
 }

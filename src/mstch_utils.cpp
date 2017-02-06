@@ -25,7 +25,7 @@
 
 #include "staticlib/config.hpp"
 #include "staticlib/io.hpp"
-#include "staticlib/utils.hpp"
+#include "staticlib/tinydir.hpp"
 
 namespace staticlib {
 namespace mustache {
@@ -36,7 +36,7 @@ namespace { // anonymous
 namespace sc = staticlib::config;
 namespace si = staticlib::io;
 namespace ss = staticlib::serialization;
-namespace su = staticlib::utils;
+namespace st = staticlib::tinydir;
 
 mstch::node create_map(const ss::JsonValue& value) {
     std::map<const std::string, mstch::node> map;
@@ -71,10 +71,10 @@ mstch::node create_mstch_node(const ss::JsonValue& value) {
 }
 
 std::string read_file_to_string(const std::string& path) {
-    su::FileDescriptor fd{path, 'r'};
+    auto fd = st::TinydirFileSource(path);
     std::array<char, 4096> buf;
     si::string_sink sink{};
-    si::copy_all(fd, sink, buf.data(), buf.size());
+    si::copy_all(fd, sink, buf);
     return std::move(sink.get_string());
 }    
 

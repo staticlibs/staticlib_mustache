@@ -67,11 +67,10 @@ public:
     /**
      * Read method for 'Source'
      * 
-     * @param buffer destination buffer
-     * @param length number of bytes to read
+     * @param span destination span
      * @return number of bytes written into buffer
      */
-    std::streamsize read(char* buffer, std::streamsize length);
+    std::streamsize read(staticlib::config::span<char> span);
             
 };
 

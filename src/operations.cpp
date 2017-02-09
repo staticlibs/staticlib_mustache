@@ -42,19 +42,19 @@ namespace su = staticlib::utils;
 std::map<std::string, std::string> load_partials(const std::string dirpath,
         const std::string& postfix) {
     std::map<std::string, std::string> res;
-    for (const st::TinydirFile& tf : st::list_directory(dirpath)) {
-        if (!(tf.is_regular_file() && su::ends_with(tf.name(), postfix))) continue;
-        std::string name = std::string(tf.name().data(), tf.name().length() - postfix.length());
+    for (const st::tinydir_path& tf : st::list_directory(dirpath)) {
+        if (!(tf.is_regular_file() && su::ends_with(tf.filename(), postfix))) continue;
+        std::string name = std::string(tf.filename().data(), tf.filename().length() - postfix.length());
         std::string val = utils::read_file_to_string(tf.path());
         auto pa = res.insert(std::make_pair(std::move(name), std::move(val)));
-        if (!pa.second) throw MustacheException(TRACEMSG(
+        if (!pa.second) throw mustache_exception(TRACEMSG(
                 "Invalid duplicate partials element," +
                 " dirpath: [" + dirpath + "], path: [" + tf.path() + "]"));
     }
     return res;
 }
 
-std::string render_string(const std::string& template_text, const ss::JsonValue& json,
+std::string render_string(const std::string& template_text, const ss::json_value& json,
         const std::map<std::string, std::string>& partials) {
     mstch::node node = utils::create_mstch_node(json);
     return mstch::render(template_text, node, partials);

@@ -28,13 +28,13 @@
 
 #include "staticlib/serialization.hpp"
 
-#include "staticlib/mustache/MustacheException.hpp"
+#include "staticlib/mustache/mustache_exception.hpp"
 
 namespace staticlib {
 namespace mustache {
 namespace utils {
 
-mstch::node create_mstch_node(const staticlib::serialization::JsonValue& value);
+mstch::node create_mstch_node(const staticlib::serialization::json_value& value);
 
 std::string read_file_to_string(const std::string& path);
 

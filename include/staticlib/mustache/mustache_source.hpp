@@ -15,22 +15,22 @@
  */
 
 /* 
- * File:   MustacheSource.hpp
+ * File:   mustache_source.hpp
  * Author: alex
  *
  * Created on October 28, 2016, 8:39 PM
  */
 
-#ifndef STATICLIB_MUSTACHE_MUSTACHESOURCE_HPP
-#define	STATICLIB_MUSTACHE_MUSTACHESOURCE_HPP
+#ifndef STATICLIB_MUSTACHE_MUSTACHE_SOURCE_HPP
+#define	STATICLIB_MUSTACHE_MUSTACHE_SOURCE_HPP
 
 #include <map>
 #include <string>
 
 #include "staticlib/pimpl.hpp"
-#include "staticlib/serialization/JsonValue.hpp"
+#include "staticlib/serialization/json_value.hpp"
 
-#include "staticlib/mustache/MustacheException.hpp"
+#include "staticlib/mustache/mustache_exception.hpp"
 
 namespace staticlib {
 namespace mustache {
@@ -39,12 +39,12 @@ namespace mustache {
  * 'Source' implementation that will render mustache output in streaming mode
  * (input file is loaded into memory though).
  */
-class MustacheSource : public staticlib::pimpl::PimplObject {
+class mustache_source : public staticlib::pimpl::pimpl_object {
 protected:
     /**
-     * Implementation class
+     * implementation class
      */
-    class Impl;
+    class impl;
 
 public:
     /**
@@ -52,7 +52,7 @@ public:
      * 
      * @param pimpl impl object
      */
-    PIMPL_CONSTRUCTOR(MustacheSource)
+    PIMPL_CONSTRUCTOR(mustache_source)
 
     /**
      * Constructor
@@ -61,7 +61,7 @@ public:
      * @param json values for template
      * @param partials partials map
      */
-    MustacheSource(const std::string& mustache_file_path, const staticlib::serialization::JsonValue& json,
+    mustache_source(const std::string& mustache_file_path, const staticlib::serialization::json_value& json,
             const std::map<std::string, std::string>& partials = std::map<std::string, std::string>());
 
     /**
@@ -77,5 +77,5 @@ public:
 } //namespace
 }
 
-#endif	/* STATICLIB_MUSTACHE_MUSTACHESOURCE_HPP */
+#endif	/* STATICLIB_MUSTACHE_MUSTACHE_SOURCE_HPP */
 

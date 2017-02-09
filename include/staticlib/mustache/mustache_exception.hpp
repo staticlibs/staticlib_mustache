@@ -15,16 +15,16 @@
  */
 
 /* 
- * File:   MustacheException.hpp
+ * File:   mustache_exception.hpp
  * Author: alex
  *
  * Created on October 28, 2016, 8:40 PM
  */
 
-#ifndef STATICLIB_MUSTACHE_MUSTACHEEXCEPTION_HPP
-#define	STATICLIB_MUSTACHE_MUSTACHEEXCEPTION_HPP
+#ifndef STATICLIB_MUSTACHE_MUSTACHE_EXCEPTION_HPP
+#define	STATICLIB_MUSTACHE_MUSTACHE_EXCEPTION_HPP
 
-#include "staticlib/config/BaseException.hpp"
+#include "staticlib/config/staticlib_exception.hpp"
 
 namespace staticlib {
 namespace mustache {
@@ -32,25 +32,25 @@ namespace mustache {
 /**
  * Module specific exception
  */
-class MustacheException : public staticlib::config::BaseException {
+class mustache_exception : public staticlib::config::staticlib_exception {
 public:
     /**
      * Default constructor
      */
-    MustacheException() = default;
+    mustache_exception() = default;
 
     /**
      * Constructor with message
      * 
      * @param msg error message
      */
-    MustacheException(const std::string& msg) :
-    staticlib::config::BaseException(msg) { }
+    mustache_exception(const std::string& msg) :
+    staticlib::config::staticlib_exception(msg) { }
 
 };
 
 } //namespace
 }
 
-#endif	/* STATICLIB_MUSTACHE_MUSTACHEEXCEPTION_HPP */
+#endif	/* STATICLIB_MUSTACHE_MUSTACHE_EXCEPTION_HPP */
 

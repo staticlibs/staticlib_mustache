@@ -15,13 +15,13 @@
  */
 
 /* 
- * File:   MustacheSource.cpp
+ * File:   mustache_source.cpp
  * Author: alex
  * 
  * Created on October 28, 2016, 8:39 PM
  */
 
-#include "staticlib/mustache/MustacheSource.hpp"
+#include "staticlib/mustache/mustache_source.hpp"
 
 #include <array>
 #include <map>
@@ -50,30 +50,30 @@ using partmap_type = const std::map<std::string, std::string>&;
 
 } //namespace
 
-class MustacheSource::Impl : public staticlib::pimpl::PimplObject::Impl {
+class mustache_source::impl : public staticlib::pimpl::pimpl_object::impl {
     mstch::renderer renderer;
 
 public:
 
-    ~Impl() STATICLIB_NOEXCEPT { }
+    ~impl() STATICLIB_NOEXCEPT { }
 
-    Impl(const std::string& mustache_file_path, const ss::JsonValue& json,
+    impl(const std::string& mustache_file_path, const ss::json_value& json,
             const std::map<std::string, std::string>& partials) try :
         renderer(utils::read_file_to_string(mustache_file_path), utils::create_mstch_node(json), partials) {
     } catch (const std::exception& e) {
-        throw MustacheException(TRACEMSG(e.what() +
+        throw mustache_exception(TRACEMSG(e.what() +
                 "\nError processing mustache template: [" + mustache_file_path + "]" +
                 " with values: [" + ss::dump_json_to_string(json) + "]"));
     }
 
-    std::streamsize read(MustacheSource&, sc::span<char> span) {
+    std::streamsize read(mustache_source&, sc::span<char> span) {
         return renderer.read(span.data(), span.size_signed());
     }   
 
 };
-PIMPL_FORWARD_CONSTRUCTOR(MustacheSource, (const std::string&)
-        (const staticlib::serialization::JsonValue&)(partmap_type), (), MustacheException)
-PIMPL_FORWARD_METHOD(MustacheSource, std::streamsize, read, (sc::span<char>), (), MustacheException)
+PIMPL_FORWARD_CONSTRUCTOR(mustache_source, (const std::string&)
+        (const staticlib::serialization::json_value&)(partmap_type), (), mustache_exception)
+PIMPL_FORWARD_METHOD(mustache_source, std::streamsize, read, (sc::span<char>), (), mustache_exception)
     
 } // namespace
 }

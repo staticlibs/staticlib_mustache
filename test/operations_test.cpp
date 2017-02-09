@@ -40,8 +40,8 @@ namespace su = staticlib::utils;
 
 void test_render() {
     std::string text = "{{>header}}:\n{{#names}}Hi {{name}}!\n{{/names}}";
-    std::vector<ss::JsonValue> names;
-    ss::JsonValue values = ss::load_json_from_string(R"({
+    std::vector<ss::json_value> names;
+    ss::json_value values = ss::load_json_from_string(R"({
     "names": [
         {"name": "Chris"},
         {"name": "Mark"},
@@ -49,7 +49,7 @@ void test_render() {
     ]
 })");
     {
-        auto fd = st::TinydirFileSink("header.mustache");
+        auto fd = st::file_sink("header.mustache");
         auto src = si::string_source("Behold");
         std::array<char, 4096> buf;
         si::copy_all(src, fd, buf);

@@ -38,7 +38,7 @@ namespace si = staticlib::io;
 namespace ss = staticlib::serialization;
 namespace st = staticlib::tinydir;
 
-mstch::node create_map(const ss::JsonValue& value) {
+mstch::node create_map(const ss::json_value& value) {
     std::map<const std::string, mstch::node> map;
     for (const auto& fi : value.as_object()) {
         map.insert({fi.name(), create_mstch_node(fi.value())});
@@ -46,7 +46,7 @@ mstch::node create_map(const ss::JsonValue& value) {
     return mstch::node(std::move(map));
 }
 
-mstch::node create_array(const ss::JsonValue& value) {
+mstch::node create_array(const ss::json_value& value) {
     std::vector<mstch::node> array;
     for (const auto& va : value.as_array()) {
         array.emplace_back(create_mstch_node(va));
@@ -56,22 +56,22 @@ mstch::node create_array(const ss::JsonValue& value) {
 
 } // namespace
 
-mstch::node create_mstch_node(const ss::JsonValue& value) {
+mstch::node create_mstch_node(const ss::json_value& value) {
     switch (value.type()) {
-    case (ss::JsonType::NULL_T): return mstch::node();
-    case (ss::JsonType::OBJECT): return create_map(value);
-    case (ss::JsonType::ARRAY): return create_array(value);
-    case (ss::JsonType::STRING): return mstch::node(value.as_string());
-    case (ss::JsonType::INTEGER): return mstch::node(static_cast<int> (value.as_int64()));
-    case (ss::JsonType::REAL): return mstch::node(value.as_double());
-    case (ss::JsonType::BOOLEAN): return mstch::node(value.as_bool());
-    default: throw MustacheException(TRACEMSG(
+    case (ss::json_type::nullt): return mstch::node();
+    case (ss::json_type::object): return create_map(value);
+    case (ss::json_type::array): return create_array(value);
+    case (ss::json_type::string): return mstch::node(value.as_string());
+    case (ss::json_type::integer): return mstch::node(static_cast<int> (value.as_int64()));
+    case (ss::json_type::real): return mstch::node(value.as_double());
+    case (ss::json_type::boolean): return mstch::node(value.as_bool());
+    default: throw mustache_exception(TRACEMSG(
                 "Unsupported JSON type:[" + sc::to_string(static_cast<char> (value.type())) + "]"));
     }
 }
 
 std::string read_file_to_string(const std::string& path) {
-    auto fd = st::TinydirFileSource(path);
+    auto fd = st::file_source(path);
     std::array<char, 4096> buf;
     si::string_sink sink{};
     si::copy_all(fd, sink, buf);

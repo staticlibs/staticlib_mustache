@@ -15,13 +15,13 @@
  */
 
 /* 
- * File:   MustacheSource_test.cpp
+ * File:   mustache_source_test.cpp
  * Author: alex
  *
  * Created on October 28, 2016, 9:23 PM
  */
 
-#include "staticlib/mustache/MustacheSource.hpp"
+#include "staticlib/mustache/mustache_source.hpp"
 
 #include <array>
 #include <iostream>
@@ -38,17 +38,17 @@ namespace ss = staticlib::serialization;
 namespace st = staticlib::tinydir;
 namespace su = staticlib::utils;
 
-const std::string TMP_FILE_NAME = "MustacheSource_test.mustache";
+const std::string tmp_file_name = "mustache_source_test.mustache";
 
 void test_render() {
     std::array<char, 4096> buf;
     std::string text = "{{>header}}:\n{{#names}}Hi {{name}}!\n{{/names}}";
     {
-        auto fd = st::TinydirFileSink(TMP_FILE_NAME);
+        auto fd = st::file_sink(tmp_file_name);
         auto src = si::string_source(text);        
         si::copy_all(src, fd, buf);
     }
-    ss::JsonValue values = ss::load_json_from_string(R"({
+    ss::json_value values = ss::load_json_from_string(R"({
     "names": [
         {"name": "Chris"},
         {"name": "Mark"},
@@ -56,7 +56,7 @@ void test_render() {
     ]
 })");
     std::map<std::string, std::string> partials = {{"header", "Behold"}};
-    auto ms = sm::MustacheSource(TMP_FILE_NAME, values, partials);
+    auto ms = sm::mustache_source(tmp_file_name, values, partials);
     auto sink = si::string_sink();
     si::copy_all(ms, sink, buf);
     slassert("Behold:\nHi Chris!\nHi Mark!\nHi Scott!\n" == sink.get_string());

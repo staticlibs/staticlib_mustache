@@ -27,7 +27,7 @@
 #include <map>
 #include <string>
 
-#include "staticlib/serialization/json_value.hpp"
+#include "staticlib/json.hpp"
 
 #include "staticlib/mustache/mustache_exception.hpp"
 
@@ -54,7 +54,7 @@ std::map<std::string, std::string> load_partials(const std::string dirpath,
  * @return rendered string
  */
 std::string render_string(const std::string& template_text, 
-        const staticlib::serialization::json_value& json,
+        const sl::json::value& json,
         const std::map<std::string, std::string>& partials = std::map<std::string, std::string>());
 
 } // namespace

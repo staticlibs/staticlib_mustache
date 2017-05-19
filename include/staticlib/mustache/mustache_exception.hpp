@@ -24,7 +24,7 @@
 #ifndef STATICLIB_MUSTACHE_MUSTACHE_EXCEPTION_HPP
 #define	STATICLIB_MUSTACHE_MUSTACHE_EXCEPTION_HPP
 
-#include "staticlib/config/staticlib_exception.hpp"
+#include "staticlib/support/exception.hpp"
 
 namespace staticlib {
 namespace mustache {
@@ -32,7 +32,7 @@ namespace mustache {
 /**
  * Module specific exception
  */
-class mustache_exception : public staticlib::config::staticlib_exception {
+class mustache_exception : public sl::support::exception {
 public:
     /**
      * Default constructor
@@ -45,7 +45,7 @@ public:
      * @param msg error message
      */
     mustache_exception(const std::string& msg) :
-    staticlib::config::staticlib_exception(msg) { }
+    sl::support::exception(msg) { }
 
 };
 

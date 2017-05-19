@@ -29,6 +29,7 @@ Visual Studio development command prompt
 
     git clone --recursive https://github.com/staticlibs/external_jansson.git
     git clone https://github.com/staticlibs/staticlib_config.git
+    git clone https://github.com/staticlibs/staticlib_support.git
     git clone https://github.com/staticlibs/staticlib_io.git
     git clone https://github.com/staticlibs/staticlib_ranges.git
     git clone https://github.com/staticlibs/staticlib_utils.git
@@ -55,6 +56,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2015-05-19**
+
+ * version 1.0.1
+ * deps update
 
 **2016-10-28**
 

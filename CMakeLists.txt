@@ -16,7 +16,7 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 # project
 project ( staticlib_mustache CXX )
-set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0 )
+set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.1 )
 set ( ${PROJECT_NAME}_DESCRIPTION "Staticlibs Mustache library" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/staticlib_mustache )
 include ( ${CMAKE_CURRENT_LIST_DIR}/resources/macros.cmake )
@@ -51,12 +51,13 @@ if ( NOT DEFINED STATICLIB_TOOLCHAIN )
         staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../external_jansson )
     endif ( )
     staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_config )
+    staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_support )
     staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_io )
     staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_ranges )
     staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_utils )
     staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_pimpl )
     staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_tinydir )
-    staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_serialization )
+    staticlib_mustache_add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/../staticlib_json )
 endif ( )
 
 # mstch_cpp11 subproject
@@ -65,11 +66,12 @@ add_subdirectory ( ${CMAKE_CURRENT_LIST_DIR}/resources/mstch_cpp11_cmake ${CMAKE
 # dependencies
 set ( ${PROJECT_NAME}_DEPS
         staticlib_config
+        staticlib_support
         staticlib_io
         staticlib_utils
         staticlib_pimpl
         staticlib_tinydir
-        staticlib_serialization )
+        staticlib_json )
 staticlib_mustache_pkg_check_modules ( ${PROJECT_NAME}_DEPS_PC REQUIRED ${PROJECT_NAME}_DEPS )
 
 # library

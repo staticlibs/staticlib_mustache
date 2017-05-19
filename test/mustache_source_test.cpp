@@ -15,40 +15,33 @@
  */
 
 /* 
- * File:   mustache_source_test.cpp
+ * File:   source_test.cpp
  * Author: alex
  *
  * Created on October 28, 2016, 9:23 PM
  */
 
-#include "staticlib/mustache/mustache_source.hpp"
+#include "staticlib/mustache/source.hpp"
 
 #include <array>
 #include <iostream>
 
 #include "staticlib/config/assert.hpp"
 #include "staticlib/io.hpp"
-#include "staticlib/serialization.hpp"
+#include "staticlib/json.hpp"
 #include "staticlib/tinydir.hpp"
 #include "staticlib/utils.hpp"
 
-namespace si = staticlib::io;
-namespace sm = staticlib::mustache;
-namespace ss = staticlib::serialization;
-namespace st = staticlib::tinydir;
-namespace su = staticlib::utils;
-
-const std::string tmp_file_name = "mustache_source_test.mustache";
+const std::string tmp_file_name = "source_test.mustache";
 
 void test_render() {
-    std::array<char, 4096> buf;
     std::string text = "{{>header}}:\n{{#names}}Hi {{name}}!\n{{/names}}";
     {
-        auto fd = st::file_sink(tmp_file_name);
-        auto src = si::string_source(text);        
-        si::copy_all(src, fd, buf);
+        auto fd = sl::tinydir::file_sink(tmp_file_name);
+        auto src = sl::io::string_source(text);        
+        sl::io::copy_all(src, fd);
     }
-    ss::json_value values = ss::load_json_from_string(R"({
+    auto values = sl::json::loads(R"({
     "names": [
         {"name": "Chris"},
         {"name": "Mark"},
@@ -56,9 +49,9 @@ void test_render() {
     ]
 })");
     std::map<std::string, std::string> partials = {{"header", "Behold"}};
-    auto ms = sm::mustache_source(tmp_file_name, values, partials);
-    auto sink = si::string_sink();
-    si::copy_all(ms, sink, buf);
+    auto ms = sl::mustache::source(tmp_file_name, values, partials);
+    auto sink = sl::io::string_sink();
+    sl::io::copy_all(ms, sink);
     slassert("Behold:\nHi Chris!\nHi Mark!\nHi Scott!\n" == sink.get_string());
 }
 

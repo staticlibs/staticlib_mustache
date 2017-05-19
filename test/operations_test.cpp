@@ -28,20 +28,14 @@
 
 #include "staticlib/config/assert.hpp"
 #include "staticlib/io.hpp"
-#include "staticlib/serialization.hpp"
+#include "staticlib/json.hpp"
 #include "staticlib/tinydir.hpp"
 #include "staticlib/utils.hpp"
 
-namespace si = staticlib::io;
-namespace sm = staticlib::mustache;
-namespace ss = staticlib::serialization;
-namespace st = staticlib::tinydir;
-namespace su = staticlib::utils;
-
 void test_render() {
     std::string text = "{{>header}}:\n{{#names}}Hi {{name}}!\n{{/names}}";
-    std::vector<ss::json_value> names;
-    ss::json_value values = ss::load_json_from_string(R"({
+    std::vector<sl::json::value> names;
+    auto values = sl::json::loads(R"({
     "names": [
         {"name": "Chris"},
         {"name": "Mark"},
@@ -49,13 +43,12 @@ void test_render() {
     ]
 })");
     {
-        auto fd = st::file_sink("header.mustache");
-        auto src = si::string_source("Behold");
-        std::array<char, 4096> buf;
-        si::copy_all(src, fd, buf);
+        auto fd = sl::tinydir::file_sink("header.mustache");
+        auto src = sl::io::string_source("Behold");
+        sl::io::copy_all(src, fd);
     }
-    std::map<std::string, std::string> partials = sm::load_partials(".");
-    std::string res = sm::render_string(text, values, partials);
+    std::map<std::string, std::string> partials = sl::mustache::load_partials(".");
+    std::string res = sl::mustache::render_string(text, values, partials);
     slassert("Behold:\nHi Chris!\nHi Mark!\nHi Scott!\n" == res);
 }
 

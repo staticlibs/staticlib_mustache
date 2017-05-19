@@ -15,13 +15,13 @@
  */
 
 /* 
- * File:   mustache_source.cpp
+ * File:   source.cpp
  * Author: alex
  * 
  * Created on October 28, 2016, 8:39 PM
  */
 
-#include "staticlib/mustache/mustache_source.hpp"
+#include "staticlib/mustache/source.hpp"
 
 #include <array>
 #include <map>
@@ -31,7 +31,7 @@
 
 #include "staticlib/config.hpp"
 #include "staticlib/io.hpp"
-#include "staticlib/pimpl/pimpl_forward_macros.hpp"
+#include "staticlib/pimpl/forward_macros.hpp"
 #include "staticlib/utils.hpp"
 
 #include "mstch_utils.hpp"
@@ -41,39 +41,33 @@ namespace mustache {
 
 namespace { // anonymous
 
-namespace sc = staticlib::config;
-namespace si = staticlib::io;
-namespace ss = staticlib::serialization;
-namespace su = staticlib::utils;
-
 using partmap_type = const std::map<std::string, std::string>&;
 
 } //namespace
 
-class mustache_source::impl : public staticlib::pimpl::pimpl_object::impl {
+class source::impl : public sl::pimpl::object::impl {
     mstch::renderer renderer;
 
 public:
 
     ~impl() STATICLIB_NOEXCEPT { }
 
-    impl(const std::string& mustache_file_path, const ss::json_value& json,
+    impl(const std::string& mustache_file_path, const sl::json::value& json,
             const std::map<std::string, std::string>& partials) try :
         renderer(utils::read_file_to_string(mustache_file_path), utils::create_mstch_node(json), partials) {
     } catch (const std::exception& e) {
         throw mustache_exception(TRACEMSG(e.what() +
                 "\nError processing mustache template: [" + mustache_file_path + "]" +
-                " with values: [" + ss::dump_json_to_string(json) + "]"));
+                " with values: [" + json.dumps() + "]"));
     }
 
-    std::streamsize read(mustache_source&, sc::span<char> span) {
+    std::streamsize read(source&, sl::io::span<char> span) {
         return renderer.read(span.data(), span.size_signed());
     }   
 
 };
-PIMPL_FORWARD_CONSTRUCTOR(mustache_source, (const std::string&)
-        (const staticlib::serialization::json_value&)(partmap_type), (), mustache_exception)
-PIMPL_FORWARD_METHOD(mustache_source, std::streamsize, read, (sc::span<char>), (), mustache_exception)
+PIMPL_FORWARD_CONSTRUCTOR(source, (const std::string&)(const sl::json::value&)(partmap_type), (), mustache_exception)
+PIMPL_FORWARD_METHOD(source, std::streamsize, read, (sl::io::span<char>), (), mustache_exception)
     
 } // namespace
 }

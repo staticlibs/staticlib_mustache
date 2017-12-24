@@ -56,6 +56,7 @@ install:
     fi
 
 before_script:
+  - git submodule update --init --recursive
   - cd ..
   - git clone https://github.com/staticlibs/cmake.git
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then

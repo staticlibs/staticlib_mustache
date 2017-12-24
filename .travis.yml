@@ -42,7 +42,7 @@ install:
         cmake
         make
         valgrind
-        libjannson-dev ;
+        libjansson-dev ;
 
     `# Fedora` ;
     $D dnf install -y

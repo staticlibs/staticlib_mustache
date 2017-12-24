@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">staticlib_mustache
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
   </td>
  </tr>
@@ -93,8 +93,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;map&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
-<code>#include &quot;staticlib/serialization/JsonValue.hpp&quot;</code><br/>
-<code>#include &quot;<a class="el" href="MustacheException_8hpp_source.html">staticlib/mustache/MustacheException.hpp</a>&quot;</code><br/>
+<code>#include &quot;staticlib/json.hpp&quot;</code><br/>
+<code>#include &quot;<a class="el" href="mustache__exception_8hpp_source.html">staticlib/mustache/mustache_exception.hpp</a>&quot;</code><br/>
 </div>
 <p><a href="operations_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -108,13 +108,13 @@ Functions</h2></td></tr>
 <tr class="memitem:aa382f8abc717644473e7dcaa51257199"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <br class="typebreak"/>
 std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestaticlib_1_1mustache.html#aa382f8abc717644473e7dcaa51257199">staticlib::mustache::load_partials</a> (const std::string dirpath, const std::string &amp;postfix=&quot;.mustache&quot;)</td></tr>
 <tr class="memdesc:aa382f8abc717644473e7dcaa51257199"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all files with specified postfix from specified directory into 'filename (without postfix)' -&gt; 'contents' map.  <a href="#aa382f8abc717644473e7dcaa51257199"></a><br/></td></tr>
-<tr class="memitem:a6a41b752931ab4907233e89a26ac1f30"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestaticlib_1_1mustache.html#a6a41b752931ab4907233e89a26ac1f30">staticlib::mustache::render_string</a> (const std::string &amp;template_text, const staticlib::serialization::JsonValue &amp;json, const std::map&lt; std::string, std::string &gt; &amp;partials=std::map&lt; std::string, std::string &gt;())</td></tr>
-<tr class="memdesc:a6a41b752931ab4907233e89a26ac1f30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders mustache template with specified values.  <a href="#a6a41b752931ab4907233e89a26ac1f30"></a><br/></td></tr>
+<tr class="memitem:a505117b11f2396ae178fc0c77aa83889"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestaticlib_1_1mustache.html#a505117b11f2396ae178fc0c77aa83889">staticlib::mustache::render_string</a> (const std::string &amp;template_text, const sl::json::value &amp;json, const std::map&lt; std::string, std::string &gt; &amp;partials=std::map&lt; std::string, std::string &gt;())</td></tr>
+<tr class="memdesc:a505117b11f2396ae178fc0c77aa83889"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders mustache template with specified values.  <a href="#a505117b11f2396ae178fc0c77aa83889"></a><br/></td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 28 2016 23:42:36 for staticlib_mustache by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Dec 24 2017 21:49:45 for staticlib_mustache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

@@ -1,10 +1,7 @@
 var searchData=
 [
   ['mustache_2ehpp',['mustache.hpp',['../mustache_8hpp.html',1,'']]],
-  ['mustacheexception',['MustacheException',['../classstaticlib_1_1mustache_1_1MustacheException.html',1,'staticlib::mustache']]],
-  ['mustacheexception',['MustacheException',['../classstaticlib_1_1mustache_1_1MustacheException.html#a3207ea0dc82af540a23d7e06f8208697',1,'staticlib::mustache::MustacheException::MustacheException()'],['../classstaticlib_1_1mustache_1_1MustacheException.html#a5590f48ac109743cbf5929baabec6128',1,'staticlib::mustache::MustacheException::MustacheException(const std::string &amp;msg)']]],
-  ['mustacheexception_2ehpp',['MustacheException.hpp',['../MustacheException_8hpp.html',1,'']]],
-  ['mustachesource',['MustacheSource',['../classstaticlib_1_1mustache_1_1MustacheSource.html',1,'staticlib::mustache']]],
-  ['mustachesource',['MustacheSource',['../classstaticlib_1_1mustache_1_1MustacheSource.html#ad8cf525de98736f9e9bad388e013ba3a',1,'staticlib::mustache::MustacheSource']]],
-  ['mustachesource_2ehpp',['MustacheSource.hpp',['../MustacheSource_8hpp.html',1,'']]]
+  ['mustache_5fexception',['mustache_exception',['../classstaticlib_1_1mustache_1_1mustache__exception.html#a96d1bbe49f074755aa07f4814f2c3e7c',1,'staticlib::mustache::mustache_exception::mustache_exception()'],['../classstaticlib_1_1mustache_1_1mustache__exception.html#a2e6384359f96699f4710a975028b11a1',1,'staticlib::mustache::mustache_exception::mustache_exception(const std::string &amp;msg)']]],
+  ['mustache_5fexception',['mustache_exception',['../classstaticlib_1_1mustache_1_1mustache__exception.html',1,'staticlib::mustache']]],
+  ['mustache_5fexception_2ehpp',['mustache_exception.hpp',['../mustache__exception_8hpp.html',1,'']]]
 ];

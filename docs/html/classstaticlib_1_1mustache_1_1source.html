@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>staticlib_mustache: staticlib::mustache::MustacheSource Class Reference</title>
+<title>staticlib_mustache: staticlib::mustache::source Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">staticlib_mustache
-   &#160;<span id="projectnumber">1.0</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
   </td>
  </tr>
@@ -82,39 +82,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacestaticlib.html">staticlib</a></li><li class="navelem"><a class="el" href="namespacestaticlib_1_1mustache.html">mustache</a></li><li class="navelem"><a class="el" href="classstaticlib_1_1mustache_1_1MustacheSource.html">MustacheSource</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacestaticlib.html">staticlib</a></li><li class="navelem"><a class="el" href="namespacestaticlib_1_1mustache.html">mustache</a></li><li class="navelem"><a class="el" href="classstaticlib_1_1mustache_1_1source.html">source</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classstaticlib_1_1mustache_1_1MustacheSource-members.html">List of all members</a>  </div>
+<a href="classstaticlib_1_1mustache_1_1source-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">staticlib::mustache::MustacheSource Class Reference</div>  </div>
+<div class="title">staticlib::mustache::source Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
 <p>'Source' implementation that will render mustache output in streaming mode (input file is loaded into memory though).  
- <a href="classstaticlib_1_1mustache_1_1MustacheSource.html#details">More...</a></p>
+ <a href="classstaticlib_1_1mustache_1_1source.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="MustacheSource_8hpp_source.html">staticlib/mustache/MustacheSource.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="source_8hpp_source.html">staticlib/mustache/source.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad8cf525de98736f9e9bad388e013ba3a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1MustacheSource.html#ad8cf525de98736f9e9bad388e013ba3a">MustacheSource</a> (const std::string &amp;mustache_file_path, const staticlib::serialization::JsonValue &amp;json, const std::map&lt; std::string, std::string &gt; &amp;partials=std::map&lt; std::string, std::string &gt;())</td></tr>
-<tr class="memdesc:ad8cf525de98736f9e9bad388e013ba3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIMPL-specific constructor.  <a href="#ad8cf525de98736f9e9bad388e013ba3a"></a><br/></td></tr>
-<tr class="memitem:aab46baa26d83779f66eb19c3ee2b547c"><td class="memItemLeft" align="right" valign="top">std::streamsize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1MustacheSource.html#aab46baa26d83779f66eb19c3ee2b547c">read</a> (char *buffer, std::streamsize length)</td></tr>
-<tr class="memdesc:aab46baa26d83779f66eb19c3ee2b547c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read method for 'Source'.  <a href="#aab46baa26d83779f66eb19c3ee2b547c"></a><br/></td></tr>
+<tr class="memitem:aa59d376c692bf6d5b0e3020e9ee03342"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1source.html#aa59d376c692bf6d5b0e3020e9ee03342">source</a> (const std::string &amp;mustache_file_path, const sl::json::value &amp;json, const std::map&lt; std::string, std::string &gt; &amp;partials=std::map&lt; std::string, std::string &gt;())</td></tr>
+<tr class="memdesc:aa59d376c692bf6d5b0e3020e9ee03342"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIMPL-specific constructor.  <a href="#aa59d376c692bf6d5b0e3020e9ee03342"></a><br/></td></tr>
+<tr class="memitem:a97a8a45832102c8801a8f66004fa2b8e"><td class="memItemLeft" align="right" valign="top">std::streamsize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1source.html#a97a8a45832102c8801a8f66004fa2b8e">read</a> (sl::io::span&lt; char &gt; span)</td></tr>
+<tr class="memdesc:a97a8a45832102c8801a8f66004fa2b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read method for 'Source'.  <a href="#a97a8a45832102c8801a8f66004fa2b8e"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>'Source' implementation that will render mustache output in streaming mode (input file is loaded into memory though). </p>
 </div><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ad8cf525de98736f9e9bad388e013ba3a"></a>
+<a class="anchor" id="aa59d376c692bf6d5b0e3020e9ee03342"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">staticlib::mustache::MustacheSource::MustacheSource </td>
+          <td class="memname">staticlib::mustache::source::source </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>mustache_file_path</em>, </td>
@@ -122,7 +122,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const staticlib::serialization::JsonValue &amp;&#160;</td>
+          <td class="paramtype">const sl::json::value &amp;&#160;</td>
           <td class="paramname"><em>json</em>, </td>
         </tr>
         <tr>
@@ -153,26 +153,16 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2>Member Function Documentation</h2>
-<a class="anchor" id="aab46baa26d83779f66eb19c3ee2b547c"></a>
+<a class="anchor" id="a97a8a45832102c8801a8f66004fa2b8e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::streamsize staticlib::mustache::MustacheSource::read </td>
+          <td class="memname">std::streamsize staticlib::mustache::source::read </td>
           <td>(</td>
-          <td class="paramtype">char *&#160;</td>
-          <td class="paramname"><em>buffer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">sl::io::span&lt; char &gt;&#160;</td>
+          <td class="paramname"><em>span</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::streamsize&#160;</td>
-          <td class="paramname"><em>length</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -180,8 +170,7 @@ Public Member Functions</h2></td></tr>
 <p>Read method for 'Source'. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">buffer</td><td>destination buffer </td></tr>
-    <tr><td class="paramname">length</td><td>number of bytes to read </td></tr>
+    <tr><td class="paramname">span</td><td>destination span </td></tr>
   </table>
   </dd>
 </dl>
@@ -190,12 +179,12 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>staticlib/mustache/<a class="el" href="MustacheSource_8hpp_source.html">MustacheSource.hpp</a></li>
+<li>staticlib/mustache/<a class="el" href="source_8hpp_source.html">source.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 28 2016 23:42:36 for staticlib_mustache by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Dec 24 2017 21:49:45 for staticlib_mustache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

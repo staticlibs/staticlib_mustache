@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_MUSTACHE_SOURCE_HPP
-#define	STATICLIB_MUSTACHE_SOURCE_HPP
+#define STATICLIB_MUSTACHE_SOURCE_HPP
 
 #include <map>
 #include <string>
@@ -77,5 +77,5 @@ public:
 } //namespace
 }
 
-#endif	/* STATICLIB_MUSTACHE_SOURCE_HPP */
+#endif /* STATICLIB_MUSTACHE_SOURCE_HPP */
 

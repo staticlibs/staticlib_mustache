@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_MUSTACHE_MSTCH_UTILS_HPP
-#define	STATICLIB_MUSTACHE_MSTCH_UTILS_HPP
+#define STATICLIB_MUSTACHE_MSTCH_UTILS_HPP
 
 #include "mstch/mstch.hpp"
 
@@ -42,5 +42,5 @@ std::string read_file_to_string(const std::string& path);
 }
 }
 
-#endif	/* STATICLIB_MUSTACHE_MSTCH_UTILS_HPP */
+#endif /* STATICLIB_MUSTACHE_MSTCH_UTILS_HPP */
 

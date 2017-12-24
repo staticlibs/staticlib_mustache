@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_MUSTACHE_OPERATIONS_HPP
-#define	STATICLIB_MUSTACHE_OPERATIONS_HPP
+#define STATICLIB_MUSTACHE_OPERATIONS_HPP
 
 #include <map>
 #include <string>
@@ -60,5 +60,5 @@ std::string render_string(const std::string& template_text,
 } // namespace
 }
 
-#endif	/* STATICLIB_MUSTACHE_OPERATIONS_HPP */
+#endif /* STATICLIB_MUSTACHE_OPERATIONS_HPP */
 

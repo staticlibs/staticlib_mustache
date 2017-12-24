@@ -1,16 +1,18 @@
 Mustache library for Staticlibs
 ===============================
 
+[![travis](https://travis-ci.org/staticlibs/staticlib_mustache.svg?branch=master)](https://travis-ci.org/staticlibs/staticlib_mustache)
+[![appveyor](https://ci.appveyor.com/api/projects/status/github/staticlibs/staticlib_mustache?svg=true)](https://ci.appveyor.com/project/staticlibs/staticlib-mustache)
+
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
 This project contains a [PIMPL](https://github.com/staticlibs/staticlib_pimpl) wrapper
-for a [mstch](https://github.com/no1msd/mstch) library. [mstch_cpp11](https://github.com/staticlibs/mstch_cpp11)
-fork of that library is imported in-tree into `mstch_cpp11` directory (tag `1.0.2-1`).
+for a [mstch](https://github.com/no1msd/mstch) library. [mstch_cpp11](https://github.com/staticlibs/mstch_cpp11).
 
 Library uses `JsonValue`s from [staticlib_serialization](https://github.com/staticlibs/staticlib_serialization)
 library for passing parameters to Mustache engine.
 
-Link to [API documentation](http://staticlibs.github.io/staticlib_mustache/docs/html/namespacestaticlib_1_1mustache.html).
+Link to the [API documentation](http://staticlibs.github.io/staticlib_mustache/docs/html/namespacestaticlib_1_1mustache.html).
 
 See usage examples in [tests](https://github.com/staticlibs/staticlib_mustache/tree/master/test);
 
@@ -21,7 +23,7 @@ How to build
 
 [pkg-config](http://www.freedesktop.org/wiki/Software/pkg-config/) utility is used for dependency management.
 For Windows users ready-to-use binary version of `pkg-config` can be obtained from [tools_windows_pkgconfig](https://github.com/staticlibs/tools_windows_pkgconfig) repository.
-See [StaticlibPkgConfig](https://github.com/staticlibs/wiki/wiki/StaticlibPkgConfig) for Staticlibs-specific details about `pkg-config` usage.
+See [StaticlibsPkgConfig](https://github.com/staticlibs/wiki/wiki/StaticlibsPkgConfig) for Staticlibs-specific details about `pkg-config` usage.
 
 To build the library on Windows using Visual Studio 2013 Express run the following commands using
 Visual Studio development command prompt 
@@ -35,7 +37,7 @@ Visual Studio development command prompt
     git clone https://github.com/staticlibs/staticlib_utils.git
     git clone https://github.com/staticlibs/staticlib_pimpl.git
     git clone https://github.com/staticlibs/staticlib_tinydir.git
-    git clone https://github.com/staticlibs/staticlib_serialization.git
+    git clone https://github.com/staticlibs/staticlib_json.git
     git clone https://github.com/staticlibs/staticlib_mustache.git
     cd staticlib_mustache
     mkdir build
@@ -56,6 +58,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2017-12-24**
+
+ * version 1.0.2
+ * vs2017 support
 
 **2015-05-19**
 

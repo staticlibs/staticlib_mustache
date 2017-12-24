@@ -22,7 +22,7 @@
  */
 
 #ifndef STATICLIB_MUSTACHE_HPP
-#define	STATICLIB_MUSTACHE_HPP
+#define STATICLIB_MUSTACHE_HPP
 
 #include "staticlib/config.hpp"
 
@@ -30,5 +30,5 @@
 #include "staticlib/mustache/source.hpp"
 #include "staticlib/mustache/operations.hpp"
 
-#endif	/* STATICLIB_MUSTACHE_HPP */
+#endif /* STATICLIB_MUSTACHE_HPP */
 

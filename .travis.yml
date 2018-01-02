@@ -53,15 +53,18 @@ install:
         valgrind
         jansson-devel ;
 
+    `# Android` ;
+    git clone https://github.com/staticlibs/android-ndk-r9d-arm-linux-androideabi-4.8.git ../android-ndk ;
+
     fi
 
 before_script:
   - git submodule update --init --recursive
   - cd ..
   - git clone https://github.com/staticlibs/cmake.git
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    git clone --recursive https://github.com/staticlibs/external_jansson.git ;
-    fi
+# mac and android
+  - git clone --recursive https://github.com/staticlibs/external_jansson.git
+# all platforms
   - git clone https://github.com/staticlibs/staticlib_config.git
   - git clone https://github.com/staticlibs/staticlib_support.git
   - git clone https://github.com/staticlibs/staticlib_io.git
@@ -82,7 +85,7 @@ script:
     set +e ;
     pushd build-standalone ;
     set -e ;
-    cmake ../staticlib_mustache  -DCMAKE_CXX_FLAGS="--std=c++11" ;
+    cmake ../staticlib_mustache  -DCMAKE_CXX_FLAGS="--std=c++1z" ;
     make ;
     set +e;
     popd ;
@@ -104,11 +107,21 @@ script:
     pushd build ;
     cmake ../staticlib_mustache/test -DCMAKE_BUILD_TYPE=Release ;
     make all test ;
+    popd ;
 
     `# Fedora` ;
     $D cat /etc/fedora-release ;
+    $D cmake /src/staticlib_mustache -DCMAKE_CXX_FLAGS="--std=c++17" ;
+    $D make ;
+    $D sh -c "rm -rf /root && mkdir /root" ;
     $D cmake /src/staticlib_mustache/test -DCMAKE_BUILD_TYPE=Release ;
     $D make all test ;
+
+    `# Android` ;
+    mkdir build-android ;
+    pushd build-android ;
+    cmake ../staticlib_mustache/test -DCMAKE_BUILD_TYPE=Release -DSTATICLIB_TOOLCHAIN=android_armeabi_gcc -DANDROID_TOOLCHAIN_DIR=`pwd`/../android-ndk ;
+    make ;
 
     fi
 

@@ -7,9 +7,9 @@ Mustache library for Staticlibs
 This project is a part of [Staticlibs](http://staticlibs.net/).
 
 This project contains a [PIMPL](https://github.com/staticlibs/staticlib_pimpl) wrapper
-for a [mstch](https://github.com/no1msd/mstch) library. [mstch_cpp11](https://github.com/staticlibs/mstch_cpp11).
+for a [mstch_cpp11](https://github.com/staticlibs/mstch_cpp11) library.
 
-Library uses `JsonValue`s from [staticlib_serialization](https://github.com/staticlibs/staticlib_serialization)
+Library uses `sl::json::value`s from [staticlib_json](https://github.com/staticlibs/staticlib_json)
 library for passing parameters to Mustache engine.
 
 Link to the [API documentation](http://staticlibs.github.io/staticlib_mustache/docs/html/namespacestaticlib_1_1mustache.html).
@@ -29,7 +29,8 @@ To build the library on Windows using Visual Studio 2013 Express run the followi
 Visual Studio development command prompt 
 (`C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\Shortcuts\VS2013 x86 Native Tools Command Prompt`):
 
-    git clone --recursive https://github.com/staticlibs/external_jansson.git
+    git clone https://github.com/staticlibs/external_jansson.git
+    git clone https://github.com/staticlibs/lookaside_jansson.git
     git clone https://github.com/staticlibs/staticlib_config.git
     git clone https://github.com/staticlibs/staticlib_support.git
     git clone https://github.com/staticlibs/staticlib_io.git
@@ -37,8 +38,10 @@ Visual Studio development command prompt
     git clone https://github.com/staticlibs/staticlib_utils.git
     git clone https://github.com/staticlibs/staticlib_pimpl.git
     git clone https://github.com/staticlibs/staticlib_tinydir.git
+    git clone https://github.com/staticlibs/tinydir.git
     git clone https://github.com/staticlibs/staticlib_json.git
     git clone https://github.com/staticlibs/staticlib_mustache.git
+    git clone https://github.com/staticlibs/mstch_cpp11.git
     cd staticlib_mustache
     mkdir build
     cd build
@@ -58,6 +61,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 
 Changelog
 ---------
+
+**2018-02-28**
+
+ * version 1.0.3
+ * drop submodule
 
 **2017-12-24**
 

@@ -16,7 +16,9 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 project ( mstch_cpp11 CXX )
 
-set ( ${PROJECT_NAME}_SRCDIR ${CMAKE_CURRENT_LIST_DIR}/../../mstch_cpp11 )
+if ( NOT DEFINED ${PROJECT_NAME}_SOURCES_DIR )
+    set ( ${PROJECT_NAME}_SOURCES_DIR ${CMAKE_CURRENT_LIST_DIR}/../../../mstch_cpp11 CACHE INTERNAL "" )
+endif ( )
 
 # check deplibs cache
 if ( STATICLIB_USE_DEPLIBS_CACHE )
@@ -30,18 +32,18 @@ if ( STATICLIB_USE_DEPLIBS_CACHE )
 endif ( )
 
 add_library ( ${PROJECT_NAME} STATIC 
-        ${${PROJECT_NAME}_SRCDIR}/src/mstch.cpp
-        ${${PROJECT_NAME}_SRCDIR}/src/render_context.cpp 
-        ${${PROJECT_NAME}_SRCDIR}/src/template_type.cpp 
-        ${${PROJECT_NAME}_SRCDIR}/src/token.cpp 
-        ${${PROJECT_NAME}_SRCDIR}/src/utils.cpp 
-        ${${PROJECT_NAME}_SRCDIR}/src/state/in_section.cpp 
-        ${${PROJECT_NAME}_SRCDIR}/src/state/outside_section.cpp
-        ${${PROJECT_NAME}_SRCDIR}/include/mstch/mstch.hpp
-        ${${PROJECT_NAME}_SRCDIR}/include/mstch/mstch_node.hpp )
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/mstch.cpp
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/render_context.cpp 
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/template_type.cpp 
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/token.cpp 
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/utils.cpp 
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/state/in_section.cpp 
+        ${${PROJECT_NAME}_SOURCES_DIR}/src/state/outside_section.cpp
+        ${${PROJECT_NAME}_SOURCES_DIR}/include/mstch/mstch.hpp
+        ${${PROJECT_NAME}_SOURCES_DIR}/include/mstch/mstch_node.hpp )
 target_include_directories ( ${PROJECT_NAME} BEFORE PRIVATE 
-        ${${PROJECT_NAME}_SRCDIR}/include
-        ${${PROJECT_NAME}_SRCDIR}/src )
+        ${${PROJECT_NAME}_SOURCES_DIR}/include
+        ${${PROJECT_NAME}_SOURCES_DIR}/src )
         
 if ( ${CMAKE_CXX_COMPILER_ID}x MATCHES "MSVCx" )
     target_compile_options ( ${PROJECT_NAME} PRIVATE

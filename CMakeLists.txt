@@ -16,7 +16,7 @@ cmake_minimum_required ( VERSION 2.8.12 )
 
 # project
 project ( staticlib_mustache CXX )
-set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.2 )
+set ( ${PROJECT_NAME}_STATICLIB_VERSION 1.0.3 )
 set ( ${PROJECT_NAME}_DESCRIPTION "Staticlibs Mustache library" )
 set ( ${PROJECT_NAME}_URL https://github.com/staticlibs/staticlib_mustache )
 include ( ${CMAKE_CURRENT_LIST_DIR}/resources/macros.cmake )
@@ -78,14 +78,14 @@ staticlib_mustache_pkg_check_modules ( ${PROJECT_NAME}_DEPS_PC REQUIRED ${PROJEC
 file ( GLOB_RECURSE ${PROJECT_NAME}_SRC ${CMAKE_CURRENT_LIST_DIR}/src/*.cpp )
 file ( GLOB_RECURSE ${PROJECT_NAME}_HEADERS ${CMAKE_CURRENT_LIST_DIR}/include/*.hpp )
 set ( ${PROJECT_NAME}_HEADERS ${${PROJECT_NAME}_HEADERS} 
-        ${CMAKE_CURRENT_LIST_DIR}/mstch_cpp11/include/mstch/mstch.hpp
-        ${CMAKE_CURRENT_LIST_DIR}/mstch_cpp11/include/mstch/mstch_node.hpp )
+        ${mstch_cpp11_SOURCES_DIR}/include/mstch/mstch.hpp
+        ${mstch_cpp11_SOURCES_DIR}/include/mstch/mstch_node.hpp )
 add_library ( ${PROJECT_NAME} STATIC ${${PROJECT_NAME}_SRC} ${${PROJECT_NAME}_HEADERS} )
 source_group ( "src" FILES ${${PROJECT_NAME}_SRC} )
 source_group ( "include" FILES ${${PROJECT_NAME}_HEADERS} )
 target_include_directories ( ${PROJECT_NAME} BEFORE PRIVATE 
         ${CMAKE_CURRENT_LIST_DIR}/include
-        ${CMAKE_CURRENT_LIST_DIR}/mstch_cpp11/include
+        ${mstch_cpp11_SOURCES_DIR}/include
         ${${PROJECT_NAME}_DEPS_PC_INCLUDE_DIRS} )
 add_dependencies ( ${PROJECT_NAME} mstch_cpp11 )
 

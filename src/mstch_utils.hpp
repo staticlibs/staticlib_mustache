@@ -42,7 +42,7 @@ inline mstch::node create_mstch_node(const sl::json::value& value);
 
 namespace detail {
 
-mstch::node create_map(const sl::json::value& value) {
+inline mstch::node create_map(const sl::json::value& value) {
     std::map<const std::string, mstch::node> map;
     for (const auto& fi : value.as_object()) {
         map.insert({fi.name(), create_mstch_node(fi.val())});
@@ -50,7 +50,7 @@ mstch::node create_map(const sl::json::value& value) {
     return mstch::node(std::move(map));
 }
 
-mstch::node create_array(const sl::json::value& value) {
+inline mstch::node create_array(const sl::json::value& value) {
     std::vector<mstch::node> array;
     for (const auto& va : value.as_array()) {
         array.emplace_back(create_mstch_node(va));

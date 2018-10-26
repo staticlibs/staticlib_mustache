@@ -61,12 +61,22 @@ public:
                 " with values: [" + json.dumps() + "]"));
     }
 
+    impl(const sl::json::value& json, const std::string& mustache_file_contents,
+            const std::map<std::string, std::string>& partials) try :
+        renderer(mustache_file_contents, utils::create_mstch_node(json), partials) {
+    } catch (const std::exception& e) {
+        throw mustache_exception(TRACEMSG(e.what() +
+                "\nError processing mustache template: [" + mustache_file_contents + "]" +
+                " with values: [" + json.dumps() + "]"));
+    }
+
     std::streamsize read(source&, sl::io::span<char> span) {
         return renderer.read(span.data(), span.size_signed());
-    }   
+    }
 
 };
 PIMPL_FORWARD_CONSTRUCTOR(source, (const std::string&)(const sl::json::value&)(partmap_type), (), mustache_exception)
+PIMPL_FORWARD_CONSTRUCTOR(source, (const sl::json::value&)(const std::string&)(partmap_type), (), mustache_exception)
 PIMPL_FORWARD_METHOD(source, std::streamsize, read, (sl::io::span<char>), (), mustache_exception)
     
 } // namespace

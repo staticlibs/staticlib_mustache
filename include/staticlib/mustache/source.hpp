@@ -65,13 +65,23 @@ public:
             const std::map<std::string, std::string>& partials = std::map<std::string, std::string>());
 
     /**
+     * Constructor
+     * 
+     * @param json values for template
+     * @param mustache_file_contents contents of the mustache file
+     * @param partials partials map
+     */
+    source(const sl::json::value& json, const std::string& mustache_file_contents,
+            const std::map<std::string, std::string>& partials = std::map<std::string, std::string>());
+
+    /**
      * Read method for 'Source'
      * 
      * @param span destination span
      * @return number of bytes written into buffer
      */
     std::streamsize read(sl::io::span<char> span);
-            
+
 };
 
 } //namespace

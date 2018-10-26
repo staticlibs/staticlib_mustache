@@ -55,9 +55,26 @@ void test_render() {
     slassert("Behold:\nHi Chris!\nHi Mark!\nHi Scott!\n" == sink.get_string());
 }
 
+void test_render_contents() {
+    std::string text = "{{>header}}:\n{{#names}}Hi {{name}}!\n{{/names}}";
+    auto values = sl::json::loads(R"({
+    "names": [
+        {"name": "Chris"},
+        {"name": "Mark"},
+        {"name": "Scott"}
+    ]
+})");
+    std::map<std::string, std::string> partials = {{"header", "Behold"}};
+    auto ms = sl::mustache::source(values, text, partials);
+    auto sink = sl::io::string_sink();
+    sl::io::copy_all(ms, sink);
+    slassert("Behold:\nHi Chris!\nHi Mark!\nHi Scott!\n" == sink.get_string());
+}
+
 int main() {
     try {
         test_render();
+        test_render_contents();
     } catch (const std::exception& e) {
         std::cout << e.what() << std::endl;
         return 1;

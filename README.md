@@ -62,6 +62,11 @@ This project is released under the [Apache License 2.0](http://www.apache.org/li
 Changelog
 ---------
 
+**2018-10-26**
+
+ * version 1.0.4
+ * allow creating sources without file IO
+
 **2018-02-28**
 
  * version 1.0.3

@@ -26,7 +26,10 @@
 
 #include "mstch/mstch.hpp"
 
+#include "staticlib/config.hpp"
 #include "staticlib/json.hpp"
+#include "staticlib/io.hpp"
+#include "staticlib/tinydir.hpp"
 
 #include "staticlib/mustache/mustache_exception.hpp"
 
@@ -34,9 +37,49 @@ namespace staticlib {
 namespace mustache {
 namespace utils {
 
-mstch::node create_mstch_node(const sl::json::value& value);
+// forward decl
+inline mstch::node create_mstch_node(const sl::json::value& value);
 
-std::string read_file_to_string(const std::string& path);
+namespace detail {
+
+mstch::node create_map(const sl::json::value& value) {
+    std::map<const std::string, mstch::node> map;
+    for (const auto& fi : value.as_object()) {
+        map.insert({fi.name(), create_mstch_node(fi.val())});
+    }
+    return mstch::node(std::move(map));
+}
+
+mstch::node create_array(const sl::json::value& value) {
+    std::vector<mstch::node> array;
+    for (const auto& va : value.as_array()) {
+        array.emplace_back(create_mstch_node(va));
+    }
+    return mstch::node(std::move(array));
+}
+
+} // namespace
+
+inline mstch::node create_mstch_node(const sl::json::value& value) {
+    switch (value.json_type()) {
+    case (sl::json::type::nullt): return mstch::node();
+    case (sl::json::type::object): return detail::create_map(value);
+    case (sl::json::type::array): return detail::create_array(value);
+    case (sl::json::type::string): return mstch::node(value.as_string());
+    case (sl::json::type::integer): return mstch::node(static_cast<int> (value.as_int64()));
+    case (sl::json::type::real): return mstch::node(value.as_double());
+    case (sl::json::type::boolean): return mstch::node(value.as_bool());
+    default: throw mustache_exception(TRACEMSG(
+                "Unsupported JSON type:[" + sl::support::to_string(static_cast<char> (value.json_type())) + "]"));
+    }
+}
+
+inline std::string read_file_to_string(const std::string& path) {
+    auto fd = sl::tinydir::file_source(path);
+    auto sink = sl::io::string_sink();
+    sl::io::copy_all(fd, sink);
+    return std::move(sink.get_string());
+}
 
 } // namespace
 }

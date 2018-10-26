@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">staticlib_mustache
-   &#160;<span id="projectnumber">1.0.2</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
   </td>
  </tr>
@@ -103,6 +103,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa59d376c692bf6d5b0e3020e9ee03342"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1source.html#aa59d376c692bf6d5b0e3020e9ee03342">source</a> (const std::string &amp;mustache_file_path, const sl::json::value &amp;json, const std::map&lt; std::string, std::string &gt; &amp;partials=std::map&lt; std::string, std::string &gt;())</td></tr>
 <tr class="memdesc:aa59d376c692bf6d5b0e3020e9ee03342"><td class="mdescLeft">&#160;</td><td class="mdescRight">PIMPL-specific constructor.  <a href="#aa59d376c692bf6d5b0e3020e9ee03342"></a><br/></td></tr>
+<tr class="memitem:ae787fa1b077f05e13910f8def6ce03bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1source.html#ae787fa1b077f05e13910f8def6ce03bc">source</a> (const sl::json::value &amp;json, const std::string &amp;mustache_file_contents, const std::map&lt; std::string, std::string &gt; &amp;partials=std::map&lt; std::string, std::string &gt;())</td></tr>
+<tr class="memdesc:ae787fa1b077f05e13910f8def6ce03bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ae787fa1b077f05e13910f8def6ce03bc"></a><br/></td></tr>
 <tr class="memitem:a97a8a45832102c8801a8f66004fa2b8e"><td class="memItemLeft" align="right" valign="top">std::streamsize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classstaticlib_1_1mustache_1_1source.html#a97a8a45832102c8801a8f66004fa2b8e">read</a> (sl::io::span&lt; char &gt; span)</td></tr>
 <tr class="memdesc:a97a8a45832102c8801a8f66004fa2b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read method for 'Source'.  <a href="#a97a8a45832102c8801a8f66004fa2b8e"></a><br/></td></tr>
 </table>
@@ -152,6 +154,48 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae787fa1b077f05e13910f8def6ce03bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">staticlib::mustache::source::source </td>
+          <td>(</td>
+          <td class="paramtype">const sl::json::value &amp;&#160;</td>
+          <td class="paramname"><em>json</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>mustache_file_contents</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; std::string, std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>partials</em> = <code>std::map&lt;&#160;std::string,&#160;std::string&#160;&gt;()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">json</td><td>values for template </td></tr>
+    <tr><td class="paramname">mustache_file_contents</td><td>contents of the mustache file </td></tr>
+    <tr><td class="paramname">partials</td><td>partials map </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2>Member Function Documentation</h2>
 <a class="anchor" id="a97a8a45832102c8801a8f66004fa2b8e"></a>
 <div class="memitem">
@@ -184,7 +228,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Dec 24 2017 21:49:45 for staticlib_mustache by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Oct 27 2018 00:11:34 for staticlib_mustache by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
